@@ -1,103 +1,140 @@
-import Image from "next/image";
+"use client";
+
+import { Table } from "antd";
+
+import type { ColumnsType } from "antd/es/table";
+
+interface VehicleData {
+  id: string;
+  type: string;
+  lockUnlock: string;
+  currentSpeed: string;
+  batteryLevel: string;
+  status: string;
+  location: string;
+  lastUpdated: string;
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const data: VehicleData[] = [
+    {
+      id: "132456",
+      type: "Scooter",
+      lockUnlock: "Lock",
+      currentSpeed: "0 km/h",
+      batteryLevel: "100%",
+      status: "PARKING",
+      location: "3.142,12",
+      lastUpdated: "2019-07-02 9:00AM",
+    },
+    {
+      id: "987654",
+      type: "Scooter",
+      lockUnlock: "Unlock",
+      currentSpeed: "0 km/h",
+      batteryLevel: "75%",
+      status: "MOVING",
+      location: "2.125,34",
+      lastUpdated: "2019-07-02 10:00AM",
+    },
+    {
+      id: "569925",
+      type: "Scooter",
+      lockUnlock: "Unlock",
+      currentSpeed: "0 km/h",
+      batteryLevel: "50%",
+      status: "IDLING",
+      location: "5.193,39",
+      lastUpdated: "2019-07-02 9:00AM",
+    },
+    {
+      id: "125864",
+      type: "Scooter",
+      lockUnlock: "Lock",
+      currentSpeed: "0 km/h",
+      batteryLevel: "15%",
+      status: "TOWING",
+      location: "2.423,12",
+      lastUpdated: "2019-07-02 9:00AM",
+    },
+    {
+      id: "125673",
+      type: "Scooter",
+      lockUnlock: "Lock",
+      currentSpeed: "0 km/h",
+      batteryLevel: "0%",
+      status: "TOWING",
+      location: "4.324,53",
+      lastUpdated: "2019-07-02 9:00AM",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const columns: ColumnsType<VehicleData> = [
+    {
+      title: "Vehicle ID",
+      dataIndex: "id",
+      key: "id",
+      sorter: (a, b) => a.id.localeCompare(b.id),
+    },
+    {
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
+      sorter: (a, b) => a.type.localeCompare(b.type),
+    },
+    {
+      title: "Lock/Unlock",
+      dataIndex: "lockUnlock",
+      key: "lockUnlock",
+      sorter: (a, b) => a.lockUnlock.localeCompare(b.lockUnlock),
+    },
+    {
+      title: "Current Speed",
+      dataIndex: "currentSpeed",
+      key: "currentSpeed",
+      sorter: (a, b) => a.currentSpeed.localeCompare(b.currentSpeed),
+    },
+    {
+      title: "Battery Level",
+      dataIndex: "batteryLevel",
+      key: "batteryLevel",
+      sorter: (a, b) => a.batteryLevel.localeCompare(b.batteryLevel),
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      sorter: (a, b) => a.status.localeCompare(b.status),
+    },
+    {
+      title: "Location",
+      dataIndex: "location",
+      key: "location",
+      sorter: (a, b) => a.location.localeCompare(b.location),
+    },
+    {
+      title: "Last Updated",
+      dataIndex: "lastUpdated",
+      key: "lastUpdated",
+      sorter: (a, b) => a.lastUpdated.localeCompare(b.lastUpdated),
+    },
+  ];
+  return (
+    <div>
+      <div className="w-full bg-[#7addae] p-8 text-center text-gray-800 text-3xl font-bold">
+        Vehicle Management
+      </div>
+
+      <div className="w-full flex items-center justify-end my-8 px-8">
+        <button className="rounded-full bg-[#7addae] px-4 py-2 space-x-2 flex items-center">
+          <span className="text-black text-xl">+</span>
+          <span className="text-black">New Vehicle</span>
+        </button>
+      </div>
+
+      <div>
+        <Table columns={columns} dataSource={data} />;
+      </div>
     </div>
   );
 }
